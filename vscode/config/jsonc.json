@@ -1,0 +1,51 @@
+{
+	"conf debug JS avec chrome (launch.json)": {
+		"prefix": "Debug JS dans Chrome",
+		"body": [
+		  "{",
+		  "    \"version\": \"0.2.0\",",
+		  "    \"configurations\": [",
+		  "        {",
+		  "            \"type\": \"chrome\",",
+		  "            \"request\": \"launch\",",
+		  "            \"name\": \"Launch Chrome against localhost\",",
+		  "            \"url\": \"http://${1:localhost}:${2:5500}/\",",
+		  "            \"webRoot\": \"\\${workspaceFolder\\}\"",
+		  "        }",
+		  "    ]",
+		  "}"
+		],
+		"description": "launch.json : config debug JS dans Chrome"
+	  },
+	  "conf debug php avec chrome (launch.json)": {
+		"prefix": "Debug PHP+JS dans Chrome",
+		"body": [
+		  "{",
+		  "    // Configuration du debug PHP+JS dans Chrome",
+		  "    \"version\": \"0.2.0\",",
+		  "    \"configurations\": [",
+		  "        {",
+		  "            \"type\": \"chrome\",",
+		  "            \"request\": \"launch\",",
+		  "            \"name\": \"Chrome sans debug\",",
+		  "            \"url\": \"http://${1:localhost}:${2:80}/${3:alias}/${4:\\${relativeFile\\}}?XDEBUG_SESSION_START=vscode\",",
+		  "            \"webRoot\": \"\\${workspaceFolder\\}\"",
+		  "        },",
+		  "        {",
+		  "            \"name\": \"xDebug seul\",",
+		  "            \"type\": \"php\",",
+		  "            \"request\": \"launch\",",
+		  "            \"port\": 9003",
+		  "        }",
+		  "    ],",
+		  "    \"compounds\": [",
+		  "      {",
+		  "        \"name\": \"Debug PHP dans Chrome\",",
+		  "        \"configurations\": [\"Chrome sans debug\", \"xDebug seul\"]",
+		  "      }",
+		  "    ]",
+		  "}"
+		],
+		"description": "launch.json : config debug PHP + Chrome"
+	  }
+}
